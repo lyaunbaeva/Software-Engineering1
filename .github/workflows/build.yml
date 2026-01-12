@@ -1,25 +1,19 @@
-name: Build
+name: Build and Test
 
-on:
-  push:
-    branches: [ main, master, develop ]
-  pull_request:
-    branches: [ main, master, develop ]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup
-      run: |
-        echo "Building project..."
-        echo "Project structure:"
-        ls -la
-        
-    - name: Build
-      run: |
-        echo "Build completed successfully"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Build project
+        run: ./gradlew build
+      - name: Run tests
+        run: ./gradlew test
