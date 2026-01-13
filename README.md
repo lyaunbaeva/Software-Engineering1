@@ -38,7 +38,45 @@ python -m unittest test_calculator.py
 ```
 .
 ├── calculator.py          # Основной модуль с функциями калькулятора
+├── calculator_web.py     # Веб-версия калькулятора (Streamlit)
+├── api.py                # REST API для калькулятора
 ├── test_calculator.py     # Модульные тесты
+├── test_api.py           # Тесты для API
 ├── requirements.txt       # Зависимости проекта
-└── README.md             # Документация
+├── README.md             # Документация проекта
+├── USER_GUIDE.md         # Руководство пользователя
+└── API_DOCUMENTATION.md  # Документация API
 ```
+
+### Запуск API
+
+```bash
+# Установка зависимостей
+pip install -r requirements.txt
+
+# Запуск API сервера
+python api.py
+```
+
+API будет доступен по адресу: `http://localhost:5000`
+
+**Пример использования:**
+```bash
+curl -X POST http://localhost:5000/api/calculate \
+     -H "Content-Type: application/json" \
+     -H "X-API-Key: secret_key_12345" \
+     -d '{"operation": "add", "a": 10, "b": 5}'
+```
+
+### Тестирование API
+
+```bash
+# Запуск автоматических тестов
+python test_api.py
+```
+
+### Документация
+
+- **[README.md](README.md)** — общая информация о проекте
+- **[USER_GUIDE.md](USER_GUIDE.md)** — подробное руководство пользователя с инструкциями и примерами
+- **[API_DOCUMENTATION.md](API_DOCUMENTATION.md)** — полная документация REST API
