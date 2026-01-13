@@ -37,15 +37,19 @@ python -m unittest test_calculator.py
 
 ```
 .
-├── calculator.py          # Основной модуль с функциями калькулятора
-├── calculator_web.py     # Веб-версия калькулятора (Streamlit)
-├── api.py                # REST API для калькулятора
-├── test_calculator.py     # Модульные тесты
-├── test_api.py           # Тесты для API
-├── requirements.txt       # Зависимости проекта
-├── README.md             # Документация проекта
-├── USER_GUIDE.md         # Руководство пользователя
-└── API_DOCUMENTATION.md  # Документация API
+├── calculator.py              # Основной модуль с функциями калькулятора
+├── calculator_web.py         # Веб-версия калькулятора (Streamlit)
+├── api.py                    # REST API для калькулятора
+├── telegram_bot.py           # Telegram-бот для калькулятора
+├── telegram_integration.py   # Модуль интеграции с Telegram
+├── test_calculator.py         # Модульные тесты
+├── test_api.py               # Тесты для API
+├── test_telegram_integration.py  # Тесты интеграции с Telegram
+├── requirements.txt           # Зависимости проекта
+├── README.md                 # Документация проекта
+├── USER_GUIDE.md             # Руководство пользователя
+├── API_DOCUMENTATION.md      # Документация API
+└── TELEGRAM_INTEGRATION.md   # Документация интеграции с Telegram
 ```
 
 ### Запуск API
@@ -75,8 +79,23 @@ curl -X POST http://localhost:5000/api/calculate \
 python test_api.py
 ```
 
+### Интеграция с Telegram
+
+Проект интегрирован с Telegram-ботом для отправки уведомлений и интерактивной работы.
+
+**Быстрый старт:**
+```bash
+# 1. Создайте бота через @BotFather в Telegram
+# 2. Получите токен бота
+# 3. Запустите бота:
+TELEGRAM_BOT_TOKEN=your_token python telegram_bot.py
+```
+
+Подробная документация: **[TELEGRAM_INTEGRATION.md](TELEGRAM_INTEGRATION.md)**
+
 ### Документация
 
 - **[README.md](README.md)** — общая информация о проекте
 - **[USER_GUIDE.md](USER_GUIDE.md)** — подробное руководство пользователя с инструкциями и примерами
 - **[API_DOCUMENTATION.md](API_DOCUMENTATION.md)** — полная документация REST API
+- **[TELEGRAM_INTEGRATION.md](TELEGRAM_INTEGRATION.md)** — документация интеграции с Telegram

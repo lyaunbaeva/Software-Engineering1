@@ -189,6 +189,19 @@ def calculate():
             'id': history_entry['id']
         }
         
+        # Интеграция с Telegram: отправка уведомления (если настроено)
+        telegram_enabled = os.getenv('TELEGRAM_ENABLED', 'false').lower() == 'true'
+        if telegram_enabled:
+            try:
+                from telegram_integration import send_notification_sync
+                chat_id = request.headers.get('X-Telegram-Chat-ID') or os.getenv('TELEGRAM_CHAT_ID')
+                if chat_id:
+                    send_notification_sync(history_entry['expression'], result, chat_id)
+            except Exception as e:
+                # Логируем ошибку, но не прерываем выполнение API
+                import logging
+                logging.error(f"Ошибка при отправке уведомления в Telegram: {e}")
+        
         return jsonify(response), 200
         
     except ValueError as e:
