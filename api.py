@@ -11,10 +11,10 @@ import os
 app = Flask(__name__)
 CORS(app)  # Разрешаем CORS для работы с фронтендом
 
-# Простой API-ключ для авторизации (в продакшене использовать переменные окружения)
+# Простой API-ключ для авторизации 
 API_KEY = os.getenv('CALCULATOR_API_KEY', 'secret_key_12345')
 
-# История вычислений (в продакшене использовать базу данных)
+# История вычислений 
 calculation_history = []
 history_id_counter = 1
 
